@@ -39,10 +39,10 @@ def sample_input_features(key, batch_size, num_features):
 # Step 5 - assign_class_labels
 def assign_class_labels(inputs, num_classes):
     res = []
-    rows, cols = inputs.shape
+    batch_size, num_features = inputs.shape
 
-    for r in range(rows):
-        res.append(jnp.argmax(inputs[r][:num_classes]))
+    for b in range(batch_size):
+        res.append(jnp.argmax(inputs[b][:num_classes]))
     
     return jnp.int32(res)
 
