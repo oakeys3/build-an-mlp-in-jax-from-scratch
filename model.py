@@ -36,8 +36,15 @@ def sample_input_features(key, batch_size, num_features):
     shape = (batch_size, num_features)
     return sample_normal_matrix(key, shape)
 
-# Step 5 - assign_class_labels (not yet solved)
-# TODO: implement
+# Step 5 - assign_class_labels
+def assign_class_labels(inputs, num_classes):
+    res = []
+    rows, cols = inputs.shape
+
+    for r in range(rows):
+        res.append(jnp.argmax(inputs[r][:num_classes]))
+    
+    return jnp.int32(res)
 
 # Step 6 - one_hot_encode_labels (not yet solved)
 # TODO: implement
