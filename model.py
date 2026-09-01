@@ -96,9 +96,7 @@ import jax.numpy as jnp
 
 def relu_activation(x):
     x_relu = []
-    for val in x:
-        x_relu.append(jnp.maximum(val, 0.0))
-
+    x_relu = jnp.maximum(x, 0.0)
     return jnp.array(x_relu)
 
 # Step 11 - softmax_probabilities
