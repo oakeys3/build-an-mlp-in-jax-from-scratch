@@ -90,8 +90,16 @@ def linear_forward(x, layer_params):
 
     return y
 
-# Step 10 - relu_activation (not yet solved)
-# TODO: implement
+# Step 10 - relu_activation
+import jax.numpy as jnp
+
+
+def relu_activation(x):
+    x_relu = []
+    for val in x:
+        x_relu.append(jnp.maximum(val, 0.0))
+
+    return jnp.array(x_relu)
 
 # Step 11 - softmax_probabilities (not yet solved)
 # TODO: implement
