@@ -65,8 +65,21 @@ def init_linear_layer(key, in_dim, out_dim, scale=0.1):
         'b': b
     }
 
-# Step 8 - init_mlp_params (not yet solved)
-# TODO: implement
+# Step 8 - init_mlp_params
+def init_mlp_params(key, layer_sizes, scale=0.1):
+    subkeys = split_prng_key(key, len(layer_sizes))
+    mlp_params = []
+
+    for i in range(len(layer_sizes)-1):
+        layer_key = subkeys[i]
+        layer_in = layer_sizes[i]
+        layer_out = layer_sizes[i+1]
+
+        layer = init_linear_layer(subkeys[i], layer_in, layer_out, scale)
+
+        mlp_params.append(layer)
+
+    return mlp_params
 
 # Step 9 - linear_forward (not yet solved)
 # TODO: implement
