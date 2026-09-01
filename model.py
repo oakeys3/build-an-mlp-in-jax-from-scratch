@@ -176,8 +176,12 @@ def training_step(params, x, one_hot_targets, learning_rate):
 
     return new_params, ce_loss
 
-# Step 20 - train_mlp (not yet solved)
-# TODO: implement
+# Step 20 - train_mlp
+def train_mlp(params, x, one_hot_targets, learning_rate, num_epochs):
+    for _ in range(num_epochs):
+        params, _ = training_step(params, x, one_hot_targets, learning_rate)
+    
+    return params
 
 # Step 21 - predict_classes (not yet solved)
 # TODO: implement
