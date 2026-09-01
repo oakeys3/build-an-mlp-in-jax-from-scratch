@@ -51,8 +51,19 @@ def one_hot_encode_labels(labels, num_classes):
     one_hot = (labels[:, None] == jnp.arange(num_classes)[None, :]).astype(jnp.float32)
     return one_hot
 
-# Step 7 - init_linear_layer (not yet solved)
-# TODO: implement
+# Step 7 - init_linear_layer
+import jax
+import jax.numpy as jnp
+
+def init_linear_layer(key, in_dim, out_dim, scale=0.1):
+    shape = (in_dim, out_dim)
+    W = sample_normal_matrix(key, shape) * scale
+    b = jnp.zeros(out_dim,)
+
+    return {
+        'W': W,
+        'b': b
+    }
 
 # Step 8 - init_mlp_params (not yet solved)
 # TODO: implement
