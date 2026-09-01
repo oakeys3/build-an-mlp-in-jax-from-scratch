@@ -110,8 +110,14 @@ def softmax_probabilities(logits):
     
     return softmax
 
-# Step 12 - mlp_forward (not yet solved)
-# TODO: implement
+# Step 12 - mlp_forward
+def mlp_forward(params, x):
+    for p in params[:-1]:
+        x = linear_forward(x, p)
+        x = relu_activation(x)
+    
+    x = linear_forward(x, params[-1])
+    return x
 
 # Step 13 - log_softmax_logits (not yet solved)
 # TODO: implement
